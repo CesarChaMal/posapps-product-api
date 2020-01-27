@@ -1,0 +1,156 @@
+service: posapps-product
+
+provider:
+  name: aws
+  runtime: java8
+  memorySize: 3008
+  timeout: 60
+  region: eu-west-1
+
+package:
+    artifact: build/distributions/posapps-product-1.0-SNAPSHOT.zip
+
+functions:
+  customer:
+    handler: io.posapps.product.Application
+    events:
+      - http:
+          path: status
+          method: get
+          cors: true
+          documentation:
+            summary: "Product API status"
+            description: "Endpoint tells you the status and version of the API"
+            methodResponses:
+              -
+                statusCode: "200"
+                responseBody:
+                  description: "Status response"
+                responseModels:
+                  "application/json": "StatusResponse"
+              -
+                statusCode: "400"
+                responseModels:
+                  "application/json": "ErrorResponse"
+
+      - http:
+          path: /
+          method: get
+          cors: true
+          documentation:
+            summary: "Get Product Updates"
+            description: "Get the products for the device making the request"
+            requestHeaders:
+              -
+                name: "Authorization"
+                description: "Basic auth using the username and password when you registered your posapps.io account"
+            queryParams:
+              -
+                name: "device"
+                description: "The name of the device you want the product updates for"
+            methodResponses:
+              -
+                statusCode: "200"
+                responseBody:
+                  description: "List of products"
+              -
+                statusCode: "400"
+                responseModels:
+                  "application/json": "ErrorResponse"
+
+      - http:
+          path: /
+          method: post
+          cors: true
+          documentation:
+            summary: "Create a Product"
+            description: "Call this endpoint from your device to create a product"
+            requestHeaders:
+              -
+                name: "Authorization"
+                description: "Basic auth using the username and password when you registered your posapps.io account"
+            queryParams:
+              -
+                name: "device"
+                description: "The name of your device you are creating the Customer from"
+            methodResponses:
+              -
+                statusCode: "200"
+                responseBody:
+                  description: "Confirmation of the Product created"
+              -
+                statusCode: "400"
+                responseModels:
+                  "application/json": "ErrorResponse"
+
+      - http:
+          path: /
+          method: put
+          cors: true
+          documentation:
+            summary: "Update a Product"
+            description: "Call this endpoint from your device to update a product"
+            requestHeaders:
+              -
+                name: "Authorization"
+                description: "Basic auth using the username and password when you registered your posapps.io account"
+            queryParams:
+              -
+                name: "device"
+                description: "The name of your device you are updating the Product from"
+            methodResponses:
+              -
+                statusCode: "200"
+                responseBody:
+                  description: "Confirmation of the Product update"
+              -
+                statusCode: "400"
+                responseModels:
+                  "application/json": "ErrorResponse"
+
+      - http:
+          path: /
+          method: delete
+          cors: true
+          documentation:
+            summary: "Delete a Product"
+            description: "Call this endpoint from your device to delete a product"
+            requestHeaders:
+              -
+                name: "Authorization"
+                description: "Basic auth using the username and password when you registered your posapps.io account"
+            queryParams:
+              -
+                name: "device"
+                description: "The name of your device you are deleting the Product from"
+            methodResponses:
+              -
+                statusCode: "200"
+                responseBody:
+                  description: "Confirmation of the Product created"
+              -
+                statusCode: "400"
+                responseModels:
+                  "application/json": "ErrorResponse"
+
+plugins:
+  - serverless-aws-documentation
+
+custom:
+  documentation:
+    summary: "posApps Product API"
+    description: "posApps Product API for managing all you product data across multiple devices"
+    tags:
+      -
+        name: "Product API"
+    models:
+      -
+        name: "StatusResponse"
+        description: "Show status information"
+        contentType: "application/json"
+        schema: ${file(model/StatusResponse.json)}
+      -
+        name: "ErrorResponse"
+        description: "Error Message"
+        contentType: "application/json"
+        schema: ${file(model/ErrorResponse.json)}

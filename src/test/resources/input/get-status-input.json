@@ -1,0 +1,59 @@
+{
+  "resource": "/status",
+  "path": "/status",
+  "httpMethod": "GET",
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip, deflate",
+    "cache-control": "no-cache",
+    "CloudFront-Forwarded-Proto": "https",
+    "CloudFront-Is-Desktop-Viewer": "true",
+    "CloudFront-Is-Mobile-Viewer": "false",
+    "CloudFront-Is-SmartTV-Viewer": "false",
+    "CloudFront-Is-Tablet-Viewer": "false",
+    "CloudFront-Viewer-Country": "GB",
+    "Host": "mmsdg8pe2d.execute-api.us-east-1.amazonaws.com",
+    "Postman-Token": "f3bc4617-4f5d-433b-9342-b90dedc44d4e",
+    "User-Agent": "PostmanRuntime/3.0.11-hotfix.2",
+    "Via": "1.1 16291083b92e5aa4f2f272f1da69c5e4.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Id": "yUB2PGDtaRgyPdbAHGjuVKfuQom_jzvD5PC-2HQYZTBOfRaNxu_ELA==",
+    "X-Amzn-Trace-Id": "Root=1-592c24f8-33209c66195b4c265ce42b92",
+    "X-Forwarded-For": "86.129.173.119, 54.240.147.72",
+    "X-Forwarded-Port": "443",
+    "X-Forwarded-Proto": "https"
+  },
+  "queryStringParameters": null,
+  "pathParameters": null,
+  "stageVariables": {
+    "profile": "local",
+    "dataSourceUrl": "jdbc:mysql://127.0.0.1:3306/posapps_product_test?useSSL=false",
+    "dataSourceUsername": "posapps_test",
+    "dataSourcePassword": "password"
+  },
+  "requestContext": {
+    "path": "/dev/status",
+    "accountId": "117001727020",
+    "resourceId": "67mr5r",
+    "stage": "dev",
+    "requestId": "7aece522-4474-11e7-bcac-37320242d22e",
+    "identity": {
+      "cognitoIdentityPoolId": null,
+      "accountId": null,
+      "cognitoIdentityId": null,
+      "caller": null,
+      "apiKey": "",
+      "sourceIp": "86.129.173.119",
+      "accessKey": null,
+      "cognitoAuthenticationType": null,
+      "cognitoAuthenticationProvider": null,
+      "userArn": null,
+      "userAgent": "PostmanRuntime/3.0.11-hotfix.2",
+      "user": null
+    },
+    "resourcePath": "/users",
+    "httpMethod": "GET",
+    "apiId": "mmsdg8pe2d"
+  },
+  "body": null,
+  "isBase64Encoded": false
+}
