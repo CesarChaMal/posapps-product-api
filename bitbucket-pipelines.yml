@@ -41,7 +41,9 @@ pipelines:
 #          - npm install -g serverless --verbose
           - npm install -g serverless
           - npm install serverless-aws-documentation --save-dev
-          - yum install java-1.8.0-openjdk-devel
+          - yum provides \*/bin/java
+          - yum list available \*openjdk\*
+#          - yum install java-1.8.0-openjdk-devel
           - JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
           - echo $JAVA_HOME
           - java -version
