@@ -1,5 +1,5 @@
-image: lambci/lambda:build-nodejs6.10
-#image: lambci/lambda:build-nodejs8.10
+#image: lambci/lambda:build-nodejs6.10
+image: lambci/lambda:build-nodejs8.10
 #image: lambci/lambda:build-nodejs8.10-alpine
 #image: lambci/lambda:build-nodejs10.15
 #image: lambci/lambda:build-nodejs12.16
@@ -17,9 +17,8 @@ pipelines:
           services:
             - mysql
           script:
-          - npm cache clean
-          - npm install -g npm@latest
-          - npm install -g serverless --verbose
+          - npm cache clean -f
+          - npm install -g npm@latest && npm install -g serverless --verbose
           - npm install serverless-aws-documentation --save-dev
           - ./gradlew build
           - ls -l build/distributions/
