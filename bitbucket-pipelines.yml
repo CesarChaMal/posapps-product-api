@@ -45,7 +45,7 @@ pipelines:
           - cd ~/jres
 #          - #https://jdk.java.net/archive/
 #          - wget -q https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz
-          - tar -xf openjdk-11.0.2_linux-x64_bin.tar.gz -C ~/jres
+          - tar -xvf openjdk-11.0.2_linux-x64_bin.tar.gz -C ~/jres
           - ln -s ~/jres/openjdk-11.0.2_linux-x64_bin ~/jres/java-8
           - export JAVA_HOME=~/jres/java-8
           - printenv | grep JAVA_HOME
