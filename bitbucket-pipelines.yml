@@ -16,9 +16,12 @@ pipelines:
           script:
           - npm cache clean -f
           - npm install -g npm@8.14.0
-          - npm install -g serverless --verbose
+#          - npm install -g serverless --verbose
+          - npm install -g serverless
           - npm install serverless-aws-documentation --save-dev
           - cat /etc/os-release
+          - lsb_release -a
+          - hostnamectl
           - java -version
           - which javac
           - ./gradlew build
@@ -37,9 +40,12 @@ pipelines:
         script:
           - npm cache clean -f
           - npm install -g npm@8.14.0
-          - npm install -g serverless --verbose
+#          - npm install -g serverless --verbose
+          - npm install -g serverless
           - npm install serverless-aws-documentation --save-dev
           - cat /etc/os-release
+          - lsb_release -a
+          - hostnamectl
           - java -version
           - which javac
           - ./gradlew build
