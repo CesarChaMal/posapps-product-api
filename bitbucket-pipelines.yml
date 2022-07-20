@@ -43,7 +43,7 @@ pipelines:
           - npm install serverless-aws-documentation --save-dev
           - yum provides \*/bin/java
           - yum list available \*openjdk\*
-          - yum install -v java-1.8.0-openjdk.x86_64
+          - yum install -v java-1.8.0-openjdk-devel.x86_64
           - java -version
           - which javac
           - JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
