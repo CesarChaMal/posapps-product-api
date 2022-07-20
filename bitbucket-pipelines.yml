@@ -43,7 +43,8 @@ pipelines:
           - npm install serverless-aws-documentation --save-dev
           - mkdir ~/jres
           - cd ~/jres
-          - tar -xf java-1.8.0-openjdk-portable-1.8.0.322.b06-4.portable.jre.el7.x86_64.tar.xz -C ~/jres
+#          - tar -xf java-1.8.0-openjdk-portable-1.8.0.322.b06-4.portable.jre.el7.x86_64.tar.xz -C ~/jres
+          - tar -xf java-1.8.0-openjdk-portable-1.8.0.322.b06-4.portable.jre.el7.x86_64.tar.xz
           - ln -s ~/jres/java-1.8.0-openjdk-portable-1.8.0.322.b06-4.portable.jre.el7.x86_64 ~/jres/java-8
           - export JAVA_HOME=~/jres/java-8
           - printenv | grep JAVA_HOME
