@@ -34,7 +34,8 @@ pipelines:
         services:
           - mysql
         script:
-          - npm install -g serverless
+          - npm cache clean -f
+          - npm install -g npm@latest && npm install -g serverless --verbose
           - npm install serverless-aws-documentation --save-dev
           - ./gradlew build
           - ls -l build/distributions/
