@@ -17,9 +17,10 @@ pipelines:
           services:
             - mysql
           script:
-          - npm install -g serverless
-          - npm install serverless-aws-documentation --save-dev
-          - ./gradlew build
+          - sudo npm cache clear
+          - sudo npm install -g serverless --verbose
+          - sudo npm install serverless-aws-documentation --save-dev
+          - sudo ./gradlew build
           - ls -l build/distributions/
           - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
           - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
