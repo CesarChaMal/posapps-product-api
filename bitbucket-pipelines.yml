@@ -19,9 +19,6 @@ pipelines:
 #          - npm install -g serverless --verbose
           - npm install -g serverless
           - npm install serverless-aws-documentation --save-dev
-          - cat /etc/os-release
-          - lsb_release -a
-          - hostnamectl
           - java -version
           - which javac
           - ./gradlew build
@@ -43,9 +40,9 @@ pipelines:
 #          - npm install -g serverless --verbose
           - npm install -g serverless
           - npm install serverless-aws-documentation --save-dev
-          - cat /etc/os-release
-          - lsb_release -a
-          - hostnamectl
+          - yum -y update
+          - yum install -y java-18-amazon-corretto-devel
+          - echo $JAVA_HOME
           - java -version
           - which javac
           - ./gradlew build
