@@ -1,7 +1,8 @@
 #image: lambci/lambda:build-nodejs6.10
 #image: lambci/lambda:build-nodejs8.10
 #image: lambci/lambda:build-nodejs10.15
-image: lambci/lambda:build-nodejs12.16
+#image: lambci/lambda:build-nodejs12.16
+image: lambci/lambda:build-nodejs14.16
 
 pipelines:
   custom: # Pipelines that can only be triggered manually
