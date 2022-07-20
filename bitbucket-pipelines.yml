@@ -41,13 +41,12 @@ pipelines:
 #          - npm install -g serverless --verbose
           - npm install -g serverless
           - npm install serverless-aws-documentation --save-dev
-          - yum provides \*/bin/java
-          - yum list available \*openjdk\*
-          - yum install -v java-1.8.0-openjdk
-          - java -version
-          - which javac
-          - JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
-          - echo $JAVA_HOME
+          - mkdir ~/jres
+          - cd ~/jres
+          - tar -xf java-1.8.0-openjdk-portable-1.8.0.322.b06-4.portable.jre.el7.x86_64.tar.xz -C ~/jres
+          - ln -s ~/jres/java-1.8.0-openjdk-portable-1.8.0.322.b06-4.portable.jre.el7.x86_64 ~/jres/java-8
+          - export JAVA_HOME=~/jres/java-8
+          - printenv | grep JAVA_HOME
           - ./gradlew build
           - ls -l build/distributions/
           - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
