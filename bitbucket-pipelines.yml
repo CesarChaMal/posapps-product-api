@@ -1,5 +1,4 @@
-#image: lambci/lambda:build-nodejs6.10
-image: lambci/lambda:
+image: lambci/lambda:build-nodejs6.10
 #image: lambci/lambda:build-nodejs8.10
 #image: lambci/lambda:build-nodejs8.10-alpine
 #image: lambci/lambda:build-nodejs10.15
