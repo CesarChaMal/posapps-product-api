@@ -27,8 +27,8 @@
   "stageVariables": {
     "profile": "local",
     "dataSourceUrl": "jdbc:mysql://127.0.0.1:3306/posapps_product_test?useSSL=false",
-    "dataSourceUsername": "root",
-    "dataSourcePassword": "mysql"
+    "dataSourceUsername": "posapps_test",
+    "dataSourcePassword": "password"
   },
   "requestContext": {
     "path": "/dev/status",
