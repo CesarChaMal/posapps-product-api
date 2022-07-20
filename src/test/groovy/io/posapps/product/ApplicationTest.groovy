@@ -142,8 +142,8 @@ class ApplicationTest {
     def stageVariables = [:]
     stageVariables.put('profile', 'local')
     stageVariables.put('dataSourceUrl', 'jdbc:mysql://127.0.0.1:3306/posapps_product_test?useSSL=false')
-    stageVariables.put('dataSourceUsername', 'posapps_test')
-    stageVariables.put('dataSourcePassword', 'password')
+    stageVariables.put('dataSourceUsername', 'root')
+    stageVariables.put('dataSourcePassword', 'mysql')
     return stageVariables
   }
 
