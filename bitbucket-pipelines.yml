@@ -35,13 +35,14 @@ pipelines:
         services:
           - mysql
         script:
-          - npm cache clean -f
-          - npm install -g npm@8.14.0
+          - yum -y update
+#          - npm cache clean -f
+#          - npm install -g npm@8.14.0
 #          - npm install -g serverless --verbose
           - npm install -g serverless
           - npm install serverless-aws-documentation --save-dev
-          - yum -y update
-          - yum install -y java-18-amazon-corretto-devel
+          - yum install java-11-openjdk-devel
+          - JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
           - echo $JAVA_HOME
           - java -version
           - which javac
