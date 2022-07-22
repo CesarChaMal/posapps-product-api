@@ -35,9 +35,10 @@ pipelines:
         services:
           - mysql
         script:
-          - yum -y update
-#          - npm cache clean -f
-#          - npm install -g npm@8.14.0
+#          - yum -y update
+          - export SLS_DEBUG="*"
+          - npm cache clean -f
+          - npm install -g npm@8.14.0
 #          - npm install -g serverless --verbose
           - npm install -g serverless
           - npm install serverless-aws-documentation --save-dev
