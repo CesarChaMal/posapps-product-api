@@ -78,8 +78,11 @@ import org.springframework.boot.autoconfigure.web.*
 import org.springframework.boot.autoconfigure.webservices.WebServicesAutoConfiguration
 import org.springframework.boot.autoconfigure.websocket.WebSocketAutoConfiguration
 import org.springframework.boot.autoconfigure.websocket.WebSocketMessagingAutoConfiguration
+import org.springframework.boot.builder.SpringApplicationBuilder
+import org.springframework.boot.web.support.SpringBootServletInitializer
 import org.springframework.context.ApplicationContext
 import org.springframework.core.env.AbstractEnvironment
+import static org.springframework.core.env.AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME
 
 @Log4j
 @SpringBootApplication
@@ -108,37 +111,43 @@ import org.springframework.core.env.AbstractEnvironment
         XADataSourceAutoConfiguration
 ])
 
-class Application implements RequestHandler<Map, Response> {
+//class Application implements RequestHandler<Map, Response> {
+class Application extends SpringBootServletInitializer implements RequestHandler<Map, Response> {
 
-  private final DATA_SOURCE_URL = "spring.datasource.url"
-  private final DATA_SOURCE_USERNAME = "spring.datasource.username"
-  private final DATA_SOURCE_PASSWORD = "spring.datasource.password"
+    private final DATA_SOURCE_URL = "spring.datasource.url"
+    private final DATA_SOURCE_USERNAME = "spring.datasource.username"
+    private final DATA_SOURCE_PASSWORD = "spring.datasource.password"
 
-  static void main(String[] args) {
-    Application.newInstance().getApplicationContext(args)
-  }
-
-  @Memoized
-  ApplicationContext getApplicationContext(String[] args = []) {
-    return SpringApplication.run(Application, args)
-  }
-
-  @Override
-  Response handleRequest(Map input, Context context) {
-    log.debug("request input: ${JsonOutput.toJson(input)}")
-    log.debug("request context: ${JsonOutput.toJson(context)}")
-    final Request request = new Request(input, context)
-    if (request.profile()) {
-      log.debug("Setting Spring profile: ${request.profile()}")
-      System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, request.profile())
-      System.setProperty(DATA_SOURCE_URL, request.dataSourceUrl())
-      System.setProperty(DATA_SOURCE_USERNAME, request.dataSourceUsername())
-      System.setProperty(DATA_SOURCE_PASSWORD, request.dataSourcePassword())
+    static void main(String[] args) {
+        Application.newInstance().getApplicationContext(args)
     }
-    def routingService = getApplicationContext().getBean(Dispatcher)
-    def response = routingService.dispatch(request)
-    log.debug("response: $response")
-    return response
-  }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(Application.class);
+    }
+
+    @Memoized
+    ApplicationContext getApplicationContext(String[] args = []) {
+        return SpringApplication.run(Application, args)
+    }
+
+    @Override
+    Response handleRequest(Map input, Context context) {
+        log.debug("request input: ${JsonOutput.toJson(input)}")
+        log.debug("request context: ${JsonOutput.toJson(context)}")
+        final Request request = new Request(input, context)
+        if (request.profile()) {
+            log.debug("Setting Spring profile: ${request.profile()}")
+            System.setProperty(ACTIVE_PROFILES_PROPERTY_NAME, request.profile())
+            System.setProperty(DATA_SOURCE_URL, request.dataSourceUrl())
+            System.setProperty(DATA_SOURCE_USERNAME, request.dataSourceUsername())
+            System.setProperty(DATA_SOURCE_PASSWORD, request.dataSourcePassword())
+        }
+        def routingService = getApplicationContext().getBean(Dispatcher)
+        def response = routingService.dispatch(request)
+        log.debug("response: $response")
+        return response
+    }
 
 }

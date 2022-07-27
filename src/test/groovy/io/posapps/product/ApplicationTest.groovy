@@ -141,7 +141,7 @@ class ApplicationTest {
   private Map getStageVariables() {
     def stageVariables = [:]
     stageVariables.put('profile', 'local')
-    stageVariables.put('dataSourceUrl', 'jdbc:mysql://127.0.0.1:3306/posapps_product_test?useSSL=false')
+    stageVariables.put('dataSourceUrl', 'jdbc:mysql://127.0.0.1:3306/posapps_product_test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC')
     stageVariables.put('dataSourceUsername', 'posapps_test')
     stageVariables.put('dataSourcePassword', 'password')
     return stageVariables

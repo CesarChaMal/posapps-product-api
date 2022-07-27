@@ -23,7 +23,7 @@ This project is provided free and open sourced under the [GNU GPL3 License](http
 
 #### Database
 * The project requires persistence and uses MySql as the default data-source
-* To be able to run the tests locally you will need to create a schema with with following details:
+* To be able to run the tests locally you will need to create a schema with following details:
     * schema name: **posapps_product_test**
     * user name: **posapps_test**
     * password: **password**

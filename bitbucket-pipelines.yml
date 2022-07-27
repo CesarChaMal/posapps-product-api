@@ -21,7 +21,7 @@ pipelines:
           - npm install serverless-aws-documentation --save-dev
           - java -version
           - which javac
-          - ./gradlew build
+          - ./gradlew clean build
           - ls -l build/distributions/
           - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
           - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
@@ -46,10 +46,10 @@ pipelines:
           - cd ~/jres
 #          - #https://jdk.java.net/archive/
           - curl https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz | tar -xzvf openjdk-11.0.2_linux-x64_bin.tar.gz -C ~/jres
-          - ln -s ~/jres/openjdk-11.0.2_linux-x64_bin ~/jres/java-8
-          - export JAVA_HOME=~/jres/java-8
+          - ln -s ~/jres/openjdk-11.0.2_linux-x64_bin ~/jres/java-11
+          - export JAVA_HOME=~/jres/java-11
           - printenv | grep JAVA_HOME
-          - ./gradlew build
+          - ./gradlew clean build
           - ls -l build/distributions/
           - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
           - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY

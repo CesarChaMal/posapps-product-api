@@ -26,7 +26,7 @@
   "pathParameters": null,
   "stageVariables": {
     "profile": "local",
-    "dataSourceUrl": "jdbc:mysql://127.0.0.1:3306/posapps_product_test?useSSL=false",
+    "dataSourceUrl": "jdbc:mysql://127.0.0.1:3306/posapps_product_test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC",
     "dataSourceUsername": "posapps_test",
     "dataSourcePassword": "password"
   },

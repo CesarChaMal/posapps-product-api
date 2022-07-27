@@ -37,7 +37,12 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.codehaus.groovy:groovy-all:2.4.7')
-    compile('mysql:mysql-connector-java')
+//	compile('org.springframework.boot:spring-boot-starter-tomcat')
+	compile('org.apache.tomcat.embed:tomcat-embed-jasper:8.0.30')
+	providedCompile('org.springframework.boot:spring-boot-starter-tomcat')
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+//    compile('mysql:mysql-connector-java')
+    compile('mysql:mysql-connector-java:8.0.13')
 	compile('com.amazonaws:aws-lambda-java-core:1.1.0')
 	compile('com.amazonaws:aws-lambda-java-log4j:1.0.0')
 	compile('com.google.code.gson:gson:2.8.0')
@@ -58,3 +63,24 @@ task buildZip(type: Zip) {
 }
 
 build.dependsOn buildZip
+
+springBoot {
+	mainClass = 'io.posapps.product.Application'
+}
+
+/*
+bootRun {
+	// pass command line options from gradle to bootRun
+	// usage: gradlew bootRun "-Dspring.profiles.active=local,protractor"
+	if (System.properties.containsKey('spring.profiles.active')) {
+		systemProperty "spring.profiles.active", System.properties['spring.profiles.active']
+	}
+}
+
+*/
+
+def profiles = 'local'
+
+bootRun {
+	args = ["--spring.profiles.active=" + profiles]
+}

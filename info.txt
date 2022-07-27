@@ -1,0 +1,2 @@
+./gradlew bootRun -Plocal
+./gradlew clean build -x test
